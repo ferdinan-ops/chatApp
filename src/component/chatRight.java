@@ -2,6 +2,7 @@
 package component;
 
 import java.awt.Color;
+import javax.swing.Icon;
 
 public class chatRight extends javax.swing.JLayeredPane {
 
@@ -11,9 +12,21 @@ public class chatRight extends javax.swing.JLayeredPane {
     }
 
     public void setText(String text){
-        txt.setText(text);
-        txt.setTime("10:35 PM");
+        if (text.equals("")) {
+            txt.hideText();
+        }else{
+            txt.setText(text);
+        }
         txt.seen();
+
+    }
+    
+    public void setImage(Icon ...image) {
+        txt.setImage(true, image);
+    }
+        
+    public void setTime(){
+        txt.setTime("10:30 pm");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

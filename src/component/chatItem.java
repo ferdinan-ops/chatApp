@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -56,6 +57,16 @@ public class chatItem extends javax.swing.JLayeredPane {
         add(layer);
     }
     
+    public void setImage(boolean right, Icon ...image) {
+        JLayeredPane layer = new JLayeredPane();
+        layer.setLayout(new FlowLayout(right?FlowLayout.RIGHT:FlowLayout.LEFT));
+        layer.setBorder(new EmptyBorder(0, 5, 0, 5));
+        Chat_Image chatImage = new Chat_Image(right);
+        chatImage.addImage(image);
+        layer.add(chatImage);
+        add(layer);
+    } 
+    
     public void sendSuccess(){
         if (label!=null) {
             label.setIcon(new ImageIcon(getClass().getResource("../icon/send.png")));
@@ -66,6 +77,10 @@ public class chatItem extends javax.swing.JLayeredPane {
         if (label!=null) {
             label.setIcon(new ImageIcon(getClass().getResource("../icon/seen.png")));
         }
+    }
+    
+    public void hideText(){
+        txt.setVisible(false);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

@@ -2,6 +2,8 @@
 package component;
 
 import java.awt.Color;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JScrollBar;
 import net.miginfocom.swing.MigLayout;
 import swing.ScrollBar;
@@ -11,14 +13,16 @@ public class chatBody extends javax.swing.JPanel {
     public chatBody() {  
         initComponents();
         init();
-        addItemRight("Last comment. This is taking too much time. All you have to do is copy the code and test it! Thats why I included the code. You are creating the JScrollPane with the The blog creates the JScrollPane with the");
+        addDate("29/05/2022");
+        addItemRight("Last comment. This is taking too much time. All you have to do is copy the code and test it! Thats why I included the code. You are creating the JScrollPane with the The blog creates the JScrollPane with the",new ImageIcon(getClass().getResource("/icon/foto.jpg")),new ImageIcon(getClass().getResource("/icon/ferdinan3.jpeg")));
         addItemLeft("Last comment. This is taking too much time. All you have to do is copy the code and test it! Thats why I included the code. You are creating the JScrollPane with the The blog creates the JScrollPane with the","Bot");
-        addItemLeft("Halo Bro! Apa Kabar?","Bot2");
+        addItemLeft("Halo Bro! Apa Kabar?","Bot2",new ImageIcon(getClass().getResource("/icon/foto.jpg")),new ImageIcon(getClass().getResource("/icon/ferdinan3.jpeg")));
         addItemRight("Halo juga Bro!, Baik");
-        addItemLeft("Mantap Bro!","Bot3");
+        addItemLeft("Mantap Bro!","Bot3",new ImageIcon(getClass().getResource("/icon/foto.jpg")),new ImageIcon(getClass().getResource("/icon/foto.jpg")));
         addItemRight("Yoi Bro, apa kabar Bro?");
-        addItemLeft("Baik-baik aja Bro","Bot4");
-        addItemRight("Keren lah bro!");
+        addDate("Hari Ini");
+        addItemLeft("","Bot4",new ImageIcon(getClass().getResource("/icon/ferdinan3.jpeg")));
+        addItemRight("Keren lah bro!",new ImageIcon(getClass().getResource("/icon/foto.jpg")),new ImageIcon(getClass().getResource("/icon/foto.jpg")));
     }
 
     private void init(){
@@ -27,19 +31,30 @@ public class chatBody extends javax.swing.JPanel {
         sp.getVerticalScrollBar().setBackground(new Color(223,215,206));
     }
     
-    public void addItemLeft(String text,String user){
+    public void addItemLeft(String text,String user, Icon ...image){
         chatLeft_With_Profile item=new chatLeft_With_Profile();
         item.setText(text);
+        item.setImage(image);
+        item.setTime(); 
         item.setUserProfile(user);
-        body.add(item,"wrap, w ::80%");
+        body.add(item,"wrap, w 100::80%");
         body.repaint();
         body.revalidate();
     }
     
-    public void addItemRight(String text){
+    public void addItemRight(String text, Icon ...image){
         chatRight item=new chatRight();
         item.setText(text);
-        body.add(item,"wrap, al right, w ::80%");
+        item.setImage(image);
+        body.add(item,"wrap, al right, w 100::80%");
+        body.repaint();
+        body.revalidate();
+    }
+    
+    public void addDate(String date){
+        chatDate item=new chatDate();
+        item.setDate(date);
+        body.add(item,"wrap, al center");
         body.repaint();
         body.revalidate();
     }
